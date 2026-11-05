@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chandler Johnson</title>
+<meta name="description" content="Chandler Johnson — CTO, Theron. Autonomous counter-UAS turrets.">
+<meta property="og:title" content="Chandler Johnson">
+<meta property="og:description" content="CTO, Theron. The hardest working CTO in the world right now.">
+<meta property="og:image" content="https://chandlerjohnson.com/assets/poster.jpg">
+<meta property="og:url" content="https://chandlerjohnson.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@chandlerbuilt">
+<meta name="theme-color" content="#0a0b0d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f2f2f0;
+    --ink-2:rgba(242,242,240,.72);
+    --ink-3:rgba(242,242,240,.42);
+    --bg:#0a0b0d;
+    --rule:rgba(242,242,240,.18);
+    --pad:clamp(20px,3.2vw,48px);
+    --font:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{overflow:hidden}
+
+  /* ---- backdrop ------------------------------------------------------- */
+  .frame{position:fixed;inset:0;overflow:hidden;background:var(--bg)}
+  .frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%}
+  .frame video{animation:push 16s cubic-bezier(.4,0,.6,1) infinite alternate;will-change:transform}
+  @keyframes push{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+  .scrim{position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(10,11,13,.55) 0%,rgba(10,11,13,.10) 35%,rgba(10,11,13,.18) 65%,rgba(10,11,13,.86) 100%),
+      linear-gradient(90deg,rgba(10,11,13,.45) 0%,rgba(10,11,13,0) 55%);
+  }
+  .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain .6s steps(2) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-1%,-1%)}100%{transform:translate(3%,1%)}}
+
+  /* ---- poster grid ---------------------------------------------------- */
+  .poster{position:relative;z-index:1;height:100dvh;padding:var(--pad);
+    display:grid;grid-template-rows:auto 1fr auto;grid-template-columns:1fr auto;gap:0}
+  .label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-variation-settings:"wdth" 118,"wght" 500;color:var(--ink-2)}
+  header{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline}
+  header .sep{color:var(--ink-3);margin:0 .6em}
+
+  .head{grid-column:1/-1;align-self:center;padding:6vh 0}
+  h1{max-width:14ch;font-size:clamp(44px,9.4vw,152px);line-height:.9;letter-spacing:-.045em;font-variation-settings:"wdth" 100,"wght" 600;text-wrap:balance}
+  h1 .dot{color:var(--ink-2)}
+  .north{margin-top:clamp(16px,2.4vw,28px);max-width:34ch;font-size:clamp(14px,1.25vw,19px);line-height:1.35;color:var(--ink-2);font-variation-settings:"wdth" 100,"wght" 400;text-wrap:pretty}
+
+  /* bottom-left: caption block */
+  .caption{align-self:end;font-size:10.5px;line-height:1.5;letter-spacing:.02em;color:var(--ink-3);max-width:30ch;font-variation-settings:"wdth" 100,"wght" 400}
+  .caption b{display:block;color:var(--ink-2);font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+
+  /* bottom-right: the links */
+  nav{align-self:end;display:grid;grid-auto-rows:min-content;border-top:1px solid var(--rule);min-width:min(360px,46vw)}
+  nav a{display:grid;grid-template-columns:2.6em 1fr auto;align-items:baseline;gap:12px;
+    padding:12px 0;min-height:44px;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none;
+    font-size:clamp(15px,1.3vw,19px);letter-spacing:-.01em;font-variation-settings:"wdth" 100,"wght" 500;
+    transition:padding-left .25s cubic-bezier(.2,.7,.2,1),color .2s}
+  nav a .i{font-size:10.5px;letter-spacing:.12em;color:var(--ink-3);font-variation-settings:"wdth" 118,"wght" 500}
+  nav a .h{font-size:11px;letter-spacing:.06em;color:var(--ink-3);font-variation-settings:"wdth" 100,"wght" 400;transition:color .2s}
+  nav a .arr{display:inline-block;margin-left:.5em;transition:transform .25s cubic-bezier(.2,.7,.2,1);color:var(--ink-3)}
+  nav a:hover,nav a:focus-visible{padding-left:8px;outline:none}
+  nav a:hover .h,nav a:focus-visible .h{color:var(--ink-2)}
+  nav a:hover .arr,nav a:focus-visible .arr{transform:translate(3px,-3px);color:var(--ink)}
+  nav a:focus-visible{box-shadow:inset 0 0 0 1px var(--ink-2)}
+
+  /* ---- motion / small screens ----------------------------------------- */
+  @media (prefers-reduced-motion:reduce){.frame video{animation:none}.grain{animation:none}}
+  @media (max-width:720px){
+    .poster{grid-template-columns:1fr;grid-template-rows:auto 1fr auto auto;row-gap:20px}
+    .frame video,.frame img{object-position:58% 35%}
+    .head{padding:0;max-width:none;align-self:end}
+    h1{font-size:clamp(46px,15vw,88px)}
+    nav{min-width:0;width:100%}
+    .caption{order:4;max-width:none}
+    header .right{display:none}
+  }
+  @media (max-height:560px) and (orientation:landscape){
+    h1{font-size:clamp(32px,7vw,64px)}.head{padding:2vh 0}.north{margin-top:8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="frame" aria-hidden="true">
+  <img src="assets/poster.jpg" alt="">
+  <video autoplay muted loop playsinline preload="auto" poster="assets/poster.jpg">
+    <source src="assets/hero.mp4?v=1" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="grain"></div>
+</div>
+
+<main class="poster">
+  <header>
+    <span class="label">Chandler Johnson</span>
+    <span class="label right">Chief Technology Officer<span class="sep">/</span>Theron</span>
+  </header>
+
+  <section class="head">
+    <h1>Chandler<br>Johnson<span class="dot">.</span></h1>
+    <p class="north">North star: be the hardest working CTO in the world right now.</p>
+  </section>
+
+  <aside class="caption">
+    <b>Theron Aimbot</b>
+    Autonomous counter-UAS turret. Designed, built and fielded in Dayton, Nevada.
+  </aside>
+
+  <nav aria-label="Links">
+    <a href="https://x.com/chandlerbuilt"><span class="i">01</span><span>X</span><span class="h">@chandlerbuilt<span class="arr">↗</span></span></a>
+    <a href="https://github.com/cyberpunkcoder"><span class="i">02</span><span>GitHub</span><span class="h">cyberpunkcoder<span class="arr">↗</span></span></a>
+    <a href="https://www.linkedin.com/in/cyberpunkcoder"><span class="i">03</span><span>LinkedIn</span><span class="h">cyberpunkcoder<span class="arr">↗</span></span></a>
+    <a href="https://therondefense.com"><span class="i">04</span><span>Theron</span><span class="h">therondefense.com<span class="arr">↗</span></span></a>
+  </nav>
+</main>
+
+</body>
+</html>
